@@ -18,6 +18,7 @@ PATH_BIN="${PATH_WORK}/bin"
 
 if [ $1 = 'b' ]; then
     rm -fr ${PATH_BIN}/*
+    mkdir -p "${PATH_BIN}"
     javac ${PATH_SRC}/*.java ${PATH_SRC}/logging/*.java -d "${PATH_BIN}"
 elif [ $1 = 'r' ]; then
     PATH_PWD="`pwd`"
