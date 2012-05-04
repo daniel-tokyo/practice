@@ -2,7 +2,7 @@
 
 ## Data Structure & Algorithms in Java
 
- * Foler: Algorithms
+ * Foler: algorithms/tree
 
  * Entry Point
    * bin/Tester.class
