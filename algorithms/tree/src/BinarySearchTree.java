@@ -4,7 +4,7 @@
  * $Id:$
  */
 
-class BinarySearchTree {
+public class BinarySearchTree {
 
     // private members
 

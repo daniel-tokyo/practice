@@ -4,60 +4,21 @@
  * $Id:$
  */
 
-public class BSTreeNode {
-
-    /* protected memebers */
-
-    protected int m_iKey;
-    protected BSTreeNode m_oLeft;
-    protected BSTreeNode m_oRight;
+public class BSTreeNode extends BinaryTreeNode {
 
     /* constructors */
 
     public BSTreeNode() {
-        this.m_iKey = 0;
-        this.m_oLeft = null;
-        this.m_oRight = null;
+        super();
     }
 
     public BSTreeNode(int iKey) {
-        this.m_iKey = iKey;
-        this.m_oLeft = null;
-        this.m_oRight = null;
+        super(iKey);
     }
 
     /* public methods */
 
-    public int getKey() {
-        return this.m_iKey;
-    }
-
-    public BSTreeNode getLeftNode() {
-        return this.m_oLeft;
-    }
-
-    public boolean addLeftNode(int iKey) {
-        if (this.m_oLeft == null) {
-            this.m_oLeft = new BSTreeNode(iKey);
-            return true;
-        } else {
-            return this.m_oLeft.add(iKey);
-        }
-    }
-
-    public BSTreeNode getRightNode() {
-        return this.m_oRight;
-    }
-
-    public boolean addRightNode(int iKey) {
-        if (this.m_oRight == null) {
-            this.m_oRight = new BSTreeNode(iKey);
-            return true;
-        } else {
-            return this.m_oRight.add(iKey);
-        }
-    }
-
+    @overwrite
     public boolean add(int iKey) {
         boolean bRet = false; // iKey == this.m_iKey
         if (iKey < this.m_iKey) {
@@ -68,6 +29,7 @@ public class BSTreeNode {
         return bRet;
     }
 
+    @overwrite
     public boolean search(int iKey) {
         boolean bRet = false;
         if (iKey == this.m_iKey) {
@@ -78,10 +40,6 @@ public class BSTreeNode {
             bRet = (this.m_oRight == null) ? false : this.m_oRight.search(iKey);
         }
         return bRet;
-    }
-
-    public String toString() {
-        return String.valueOf(this.m_iKey);
     }
 }
 
