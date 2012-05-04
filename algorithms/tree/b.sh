@@ -12,13 +12,13 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-PATH_WORK='/home/daniel/test/algorithms/tree'
+PATH_WORK='.'
 PATH_SRC="${PATH_WORK}/src"
 PATH_BIN="${PATH_WORK}/bin"
 
 if [ $1 = 'b' ]; then
     rm -fr ${PATH_BIN}/*
-    javac ${PATH_SRC}/*.java ${PATH_SRC}/logging/*.java ${PATH_SRC}/v1/*.java -d "${PATH_BIN}"
+    javac ${PATH_SRC}/*.java ${PATH_SRC}/logging/*.java -d "${PATH_BIN}"
 elif [ $1 = 'r' ]; then
     PATH_PWD="`pwd`"
     cd ${PATH_BIN}
