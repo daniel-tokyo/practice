@@ -1,4 +1,4 @@
-# *Practice*
+# __Practice__
 
 ## Data Structure & Algorithms in Java
 
