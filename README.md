@@ -1,6 +1,6 @@
-= practice =
+# practice
 
-== Data Structure & Algorithms in Java ==
+## Data Structure & Algorithms in Java
 
  * Foler: Algorithms
 
