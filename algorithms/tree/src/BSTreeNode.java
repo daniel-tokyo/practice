@@ -18,7 +18,7 @@ public class BSTreeNode extends BinaryTreeNode {
 
     /* public methods */
 
-    @overwrite
+    @override
     public boolean add(int iKey) {
         boolean bRet = false; // iKey == this.m_iKey
         if (iKey < this.m_iKey) {
@@ -29,7 +29,7 @@ public class BSTreeNode extends BinaryTreeNode {
         return bRet;
     }
 
-    @overwrite
+    @override
     public boolean search(int iKey) {
         boolean bRet = false;
         if (iKey == this.m_iKey) {
