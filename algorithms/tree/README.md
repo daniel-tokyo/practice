@@ -2,8 +2,13 @@
 
 ## Class Hierarchy
 
-  --Tree.....................--TreeNode
-    |                          |
-    +--BinaryTree..............+--BinaryTreeNode
-       |                          |
-       +--BinarySearchTree........+--BSTreeNode(BinarySearchTreeNode)
+    BinaryTreeHelper            BinaryTree                  BinaryTreeNode
+        |                        .  |  .                     .  |
+        +-- ToStringHelper       .  |  .......................  |
+                .                .  |                           |
+                ..................  |                           |
+                                    +-- BinarySearchTree        +-- BSTreeNode
+                                            .                       (BinarySearchTreeNode)
+                                            .                           .
+                                            .............................
+

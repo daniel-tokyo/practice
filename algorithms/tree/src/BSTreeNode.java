@@ -6,7 +6,7 @@
 
 public class BSTreeNode extends BinaryTreeNode {
 
-    /* constructors */
+    // constructors
 
     public BSTreeNode() {
         super();
@@ -16,9 +16,9 @@ public class BSTreeNode extends BinaryTreeNode {
         super(iKey);
     }
 
-    /* public methods */
+    // public methods
 
-    @override
+    // implement the abstract method of BinaryTreeNode
     public boolean add(int iKey) {
         boolean bRet = false; // iKey == this.m_iKey
         if (iKey < this.m_iKey) {
@@ -29,7 +29,25 @@ public class BSTreeNode extends BinaryTreeNode {
         return bRet;
     }
 
-    @override
+    public boolean addLeftNode(int iKey) {
+        if (this.m_oLeft == null) {
+            this.m_oLeft = new BSTreeNode(iKey);
+            return true;
+        } else {
+            return this.m_oLeft.add(iKey);
+        }
+    }
+
+    public boolean addRightNode(int iKey) {
+        if (this.m_oRight == null) {
+            this.m_oRight = new BSTreeNode(iKey);
+            return true;
+        } else {
+            return this.m_oRight.add(iKey);
+        }
+    }
+
+    // implement the abstract method of BinaryTree
     public boolean search(int iKey) {
         boolean bRet = false;
         if (iKey == this.m_iKey) {
