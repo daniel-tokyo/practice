@@ -18,7 +18,7 @@ class Tester {
             m_oTracer.echo("----- build tree -----");
             for (int i = 0; i < 100; i++) {
                 int iKey = oRandom.nextInt(10000);
-                String oMsg = "Add [" + iKey + "].";
+                String oMsg = "Add [" + iKey + "]...(" + i + ")";
                 if (oTree.add(iKey) == false) {
                     oMsg +=  " -> failed!";
                 }
