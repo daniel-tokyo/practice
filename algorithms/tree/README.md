@@ -1,5 +1,14 @@
 # Tree Classes
 
+## Class List
+  * BinaryTree
+  * BinaryTreeNode
+  * BinaryTreeHelper
+  * ToStringHelper
+  * BinarySearchTree
+  * BSTreeNode (BinarySearchTreeNode)
+--------
+
 ## Class Hierarchy
 
     BinaryTreeHelper            BinaryTree                  BinaryTreeNode
@@ -11,4 +20,4 @@
                                             .                       (BinarySearchTreeNode)
                                             .                           .
                                             .............................
-
+--------
