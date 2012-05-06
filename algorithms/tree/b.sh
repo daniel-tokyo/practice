@@ -4,7 +4,9 @@
 #-------------------------------------------------------------
 
 usage() {
-    echo -e "Usage:\n\t`basename $0` <b|r|c>\n"
+    echo "Usage:"
+    echo "        `basename $0` <b|r|c>"
+    echo ""
 }
 
 if [ $# -ne 1 ]; then
