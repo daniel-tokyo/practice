@@ -4,50 +4,44 @@
  * $Id:$
  */
 
-public abstract class BinaryTreeNode {
+public abstract class BinaryTreeNode<T> {
 
     /* protected members */
 
-    protected int m_iKey;
-    protected BinaryTreeNode m_oLeft;
-    protected BinaryTreeNode m_oRight;
+    protected T m_tKey;
+    protected BinaryTreeNode<T> m_oLeft;
+    protected BinaryTreeNode<T> m_oRight;
 
     // constructors
 
-    public BinaryTreeNode() {
-        this.m_iKey = 0;
-        this.m_oLeft = null;
-        this.m_oRight = null;
-    }
-
-    public BinaryTreeNode(int iKey) {
-        this.m_iKey = iKey;
+    public BinaryTreeNode(T tKey) {
+        this.m_tKey = tKey;
         this.m_oLeft = null;
         this.m_oRight = null;
     }
 
     // public methods
 
-    public int getKey() {
-        return this.m_iKey;
+    public T getKey() {
+        return this.m_tKey;
     }
 
-    public BinaryTreeNode getLeftNode() {
+    public BinaryTreeNode<T> getLeftNode() {
         return this.m_oLeft;
     }
 
-    public BinaryTreeNode getRightNode() {
+    public BinaryTreeNode<T> getRightNode() {
         return this.m_oRight;
     }
 
     public String toString() {
-        return String.valueOf(this.m_iKey);
+        return String.valueOf(this.m_tKey);
     }
 
     // abstract methods
 
-    abstract boolean add(int iKey); 
-    abstract boolean search(int iKey);
+    abstract boolean add(T tKey); 
+    abstract boolean search(T tKey);
 }
 
 /*{+----------------------------------------- Embira Footer 1.6 ---------+

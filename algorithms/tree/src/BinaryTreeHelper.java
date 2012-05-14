@@ -5,7 +5,7 @@
  */
 
 public interface BinaryTreeHelper {
-    void treat(BinaryTreeNode oNode); // for deal with the node of binary tree
+    void treat(BinaryTreeNode<?> oNode); // for deal with the node of binary tree
 }
 
 /*{+----------------------------------------- Embira Footer 1.6 ---------+

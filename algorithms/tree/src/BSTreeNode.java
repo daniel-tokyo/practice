@@ -4,58 +4,54 @@
  * $Id:$
  */
 
-public class BSTreeNode extends BinaryTreeNode {
+public class BSTreeNode<T extends Comparable<T>> extends BinaryTreeNode<T> {
 
     // constructors
 
-    public BSTreeNode() {
-        super();
-    }
-
-    public BSTreeNode(int iKey) {
-        super(iKey);
+    public BSTreeNode(T tKey) {
+        super(tKey);
     }
 
     // public methods
 
     // implement the abstract method of BinaryTreeNode
-    public boolean add(int iKey) {
-        boolean bRet = false; // iKey == this.m_iKey
-        if (iKey < this.m_iKey) {
-            bRet = addLeftNode(iKey);
-        } else if (iKey > this.m_iKey) {
-            bRet = addRightNode(iKey);
+    public boolean add(T tKey) {
+        boolean bRet = false; // tKey == this.m_tKey
+        if (this.m_tKey.compareTo(tKey) > 0) {
+            bRet = addLeftNode(tKey);
+        } else if (this.m_tKey.compareTo(tKey) < 0) {
+            bRet = addRightNode(tKey);
         }
         return bRet;
     }
 
-    public boolean addLeftNode(int iKey) {
+    public boolean addLeftNode(T tKey) {
         if (this.m_oLeft == null) {
-            this.m_oLeft = new BSTreeNode(iKey);
+            this.m_oLeft = new BSTreeNode<T>(tKey);
             return true;
         } else {
-            return this.m_oLeft.add(iKey);
+            return this.m_oLeft.add(tKey);
         }
     }
 
-    public boolean addRightNode(int iKey) {
+    public boolean addRightNode(T tKey) {
         if (this.m_oRight == null) {
-            this.m_oRight = new BSTreeNode(iKey);
+            this.m_oRight = new BSTreeNode<T>(tKey);
             return true;
         } else {
-            return this.m_oRight.add(iKey);
+            return this.m_oRight.add(tKey);
         }
     }
 
     // implement the abstract method of BinaryTree
-    public boolean search(int iKey) {
+    public boolean search(T tKey) {
         boolean bRet = false;
-        if (iKey == this.m_iKey) {
+        if (this.m_tKey.compareTo(tKey) == 0) {
             bRet = true;
-        } else if (iKey < this.m_iKey) {
-            bRet = (this.m_oLeft == null) ? false : this.m_oLeft.search(iKey);
-        } else { // node.mKey > this.mKey
-            bRet = (this.m_oRight == null) ? false : this.m_oRight.search(iKey);
+        } else if (this.m_tKey.compareTo(tKey) > 0) {
+            bRet = (this.m_oLeft == null) ? false : this.m_oLeft.search(tKey);
+        } else { // tKey > this.m_tKey
+            bRet = (this.m_oRight == null) ? false : this.m_oRight.search(tKey);
         }
         return bRet;
     }

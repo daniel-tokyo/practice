@@ -13,13 +13,13 @@ class Tester {
     public static void main(String[] args) {
         try {
             m_oTracer.echo("Testing for binary search tree: ");
-            BinarySearchTree oTree = new BinarySearchTree();
+            BinarySearchTree<Float> oTree = new BinarySearchTree<Float>();
             Random oRandom = new Random();
             m_oTracer.echo("----- build tree -----");
             for (int i = 0; i < 100; i++) {
-                int iKey = oRandom.nextInt(10000);
-                String oMsg = "Add [" + iKey + "]...(" + i + ")";
-                if (oTree.add(iKey) == false) {
+                Float ofKey = new Float(oRandom.nextInt(10000) + oRandom.nextFloat());
+                String oMsg = "Add [" + ofKey + "]...(" + i + ")";
+                if (oTree.add(ofKey) == false) {
                     oMsg +=  " -> failed!";
                 }
                 m_oTracer.echo(oMsg);

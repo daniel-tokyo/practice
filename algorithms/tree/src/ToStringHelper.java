@@ -19,7 +19,7 @@ public class ToStringHelper implements BinaryTreeHelper {
     // public methods
 
     // implemnts the interface of BinaryTreeHelper
-    public void treat(BinaryTreeNode oNode) {
+    public void treat(BinaryTreeNode<?> oNode) {
         m_oStrBuffer.append(oNode.toString() + " ");
     }
 

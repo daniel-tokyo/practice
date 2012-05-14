@@ -4,7 +4,7 @@
  * $Id:$
  */
 
-public class BinarySearchTree extends BinaryTree {
+public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     // constructors
 
@@ -15,9 +15,9 @@ public class BinarySearchTree extends BinaryTree {
     // private methods
 
     // implement the abstract method of BinaryTree
-    protected boolean makeRoot(int iKey) {
+    protected boolean makeRoot(T tKey) {
         if (this.m_oRoot == null) {
-            this.m_oRoot = new BSTreeNode(iKey);
+            this.m_oRoot = new BSTreeNode<T>(tKey);
             return true;
         } else {
             return false;

@@ -4,11 +4,11 @@
  * $Id:$
  */
 
-public abstract class BinaryTree {
+public abstract class BinaryTree<T> {
 
     // protected members
 
-    protected BinaryTreeNode m_oRoot;
+    protected BinaryTreeNode<T> m_oRoot;
 
     // constructors
 
@@ -18,16 +18,16 @@ public abstract class BinaryTree {
 
     // abstract methods
 
-    abstract boolean makeRoot(int iKey);
+    abstract boolean makeRoot(T tKey);
 
     // public methods
 
-    public boolean add(int iKey) {
-        return ((this.m_oRoot == null) ? makeRoot(iKey) : this.m_oRoot.add(iKey));
+    public boolean add(T tKey) {
+        return ((this.m_oRoot == null) ? makeRoot(tKey) : this.m_oRoot.add(tKey));
     }
 
-    public boolean search(int iKey) {
-        return ((this.m_oRoot == null) ? false : this.m_oRoot.search(iKey));
+    public boolean search(T tKey) {
+        return ((this.m_oRoot == null) ? false : this.m_oRoot.search(tKey));
     }
 
     public String toString() {
