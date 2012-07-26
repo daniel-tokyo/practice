@@ -1,4 +1,4 @@
-# The practice for fast fibonacci algorithms.
+# The practice for fast fibonacci algorithms
 
 ## References
   * Project Nayuki: http://nayuki.eigenstate.org/page/fast-fibonacci-algorithms
