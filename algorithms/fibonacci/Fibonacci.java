@@ -5,8 +5,6 @@
 
 
 import java.lang.Math;
-import java.math.BigInteger;
-import java.math.BigDecimal;
 
 
 public class Fibonacci {
@@ -23,8 +21,10 @@ public class Fibonacci {
     private static final String S_ERR_ARG = new String("Need 2 input arguments!");
     private static final String S_ERR_NUMBER = 
         new String("The input number should be greater than zero!");
+    private static final String S_ERR_NUMBER_70 = 
+        new String("The input number cannot be greater than 69!");
     private static final String S_ERR_NUMBER_93 = 
-        new String("The integer will overflow! Please try to use direct algorithm.");
+        new String("The integer will overflow! The input number cannot be greater than 92!");
     private static final String S_ERR_METHOD = 
         new String("The input algorithm does not support!");
 
@@ -90,16 +90,16 @@ public class Fibonacci {
         }
     }
 
-    private static BigInteger getFibonacciNumber() {
+    private static long getFibonacciNumber() {
         switch (m_eMethod) {
             case RECURSIVE:
-                return BigInteger.valueOf(recursive(m_lNumber));
+                return recursive(m_lNumber);
             case LOOP:
-                return BigInteger.valueOf(loop(m_lNumber));
+                return loop(m_lNumber);
             case MATRIX:
-                return BigInteger.valueOf(matrix(m_lNumber));
+                return matrix(m_lNumber);
             case DOUBLING:
-                return BigInteger.valueOf(doubling(m_lNumber));
+                return doubling(m_lNumber);
             case DIRECT:
                 return direct(m_lNumber);
             default:
@@ -198,19 +198,17 @@ public class Fibonacci {
     }
 
     // F(n) = (sqrt(5)/5) * (pow(((1+sqrt(5))/2), n) - pow((1-sqrt(5))/2, n))
-    private static BigInteger direct(long lNumber) {
+    private static long direct(long lNumber) {
         if (lNumber < 0) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
-        } else if (lNumber == 0) {
-            return BigInteger.ZERO;
-        } else if (lNumber == 1) {
-            return BigInteger.ONE;
+        } else if (lNumber >= 70) {
+            throw new IllegalArgumentException(S_ERR_NUMBER_70);
+        } else if (lNumber < 2) {
+            return lNumber;
         } else {
             double dRes = D_FACTOR * 
                 (Math.pow(D_PHI, lNumber) - Math.pow(D_PSI, lNumber));
-            System.out.println(dRes);
-            System.out.println(BigDecimal.valueOf(dRes));
-            return BigDecimal.valueOf(dRes).toBigInteger();
+            return Double.valueOf(dRes).longValue();
         }
     }
 }
