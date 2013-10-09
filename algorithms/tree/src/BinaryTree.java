@@ -38,7 +38,7 @@ public abstract class BinaryTree<T> {
 
     // protected methods
 
-    protected void traversePreOrder(BinaryTreeNode oNode, BinaryTreeHelper oHelper) {
+    protected void traversePreOrder(BinaryTreeNode<T> oNode, BinaryTreeHelper oHelper) {
         if (oNode != null) {
             oHelper.treat(oNode);
             traversePreOrder(oNode.getLeftNode(), oHelper);
@@ -46,7 +46,7 @@ public abstract class BinaryTree<T> {
         }
     }
 
-    protected void traverseInOrder(BinaryTreeNode oNode, BinaryTreeHelper oHelper) {
+    protected void traverseInOrder(BinaryTreeNode<T> oNode, BinaryTreeHelper oHelper) {
         if (oNode != null) {
             traverseInOrder(oNode.getLeftNode(), oHelper);
             oHelper.treat(oNode);
@@ -54,7 +54,7 @@ public abstract class BinaryTree<T> {
         }
     }
 
-    protected void traversePostOrder(BinaryTreeNode oNode, BinaryTreeHelper oHelper) {
+    protected void traversePostOrder(BinaryTreeNode<T> oNode, BinaryTreeHelper oHelper) {
         if (oNode != null) {
             traversePostOrder(oNode.getLeftNode(), oHelper);
             traversePostOrder(oNode.getRightNode(), oHelper);
