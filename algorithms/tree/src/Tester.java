@@ -106,7 +106,7 @@ class TreeFactory {
             case DOUBLE:
                 return buildDoubleTree(iCnt);
             case STRING:
-                //return buildStringTree(iCnt);
+                return buildStringTree(iCnt);
             default:
                 assert false; // ERROR: The tree type is wrong!
                 return null;
@@ -150,6 +150,11 @@ class TreeFactory {
             }
         }
         return oTree;
+    }
+
+    private BinaryTree<?> buildStringTree(int iCnt) {
+        m_oTracer.echo("Coming soon !");
+        return null;
     }
 
     private String buildMessage(int iIndex, Number oKey, boolean bFlag) {
