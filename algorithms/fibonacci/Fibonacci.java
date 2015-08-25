@@ -11,7 +11,10 @@ public class Fibonacci {
 
     enum method { RECURSIVE, LOOP, MATRIX, DOUBLING, DIRECT } // input methods
 
-    private static long m_lNumber = 0;
+    private static final int MAX_LIMITED = 93;
+    private static final int MAX_LIMITED_DIRECT = 70;
+
+    private static long     m_lNumber = 0;
     private static method   m_eMethod = method.DIRECT;
 
     // Constants {-----------------------------------------------------
@@ -21,10 +24,10 @@ public class Fibonacci {
     private static final String S_ERR_ARG = new String("Need 2 input arguments!");
     private static final String S_ERR_NUMBER = 
         new String("The input number should be greater than zero!");
-    private static final String S_ERR_NUMBER_70 = 
-        new String("The input number cannot be greater than 69!");
-    private static final String S_ERR_NUMBER_93 = 
-        new String("The integer will overflow! The input number cannot be greater than 92!");
+    private static final String S_ERR_NUMBER_DIRECT = 
+        new String("The input number cannot be greater than " + MAX_LIMITED_DIRECT + "!");
+    private static final String S_ERR_NUMBER_LIMITED = 
+        new String("The integer will overflow! The input number cannot be greater than " + MAX_LIMITED + "!");
     private static final String S_ERR_METHOD = 
         new String("The input algorithm does not support!");
 
@@ -108,7 +111,7 @@ public class Fibonacci {
     }
 
     private static long recursive(long lNumber) {
-        if (lNumber < 0 || lNumber >= 93) {
+        if (lNumber < 0 || lNumber >= MAX_LIMITED) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
         } else if (lNumber < 2) {
             return lNumber;
@@ -121,8 +124,8 @@ public class Fibonacci {
     private static long loop(long lNumber) {
         if (lNumber < 0) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
-        } else if (lNumber >= 93) {
-            throw new IllegalArgumentException(S_ERR_NUMBER_93);
+        } else if (lNumber >= MAX_LIMITED) {
+            throw new IllegalArgumentException(S_ERR_NUMBER_LIMITED);
         } else {
             long lFn = 0;
             long lFn1= 1;
@@ -138,8 +141,8 @@ public class Fibonacci {
     private static long matrix(long lNumber) {
         if (lNumber < 0) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
-        } else if (lNumber >= 93) {
-            throw new IllegalArgumentException(S_ERR_NUMBER_93);
+        } else if (lNumber >= MAX_LIMITED) {
+            throw new IllegalArgumentException(S_ERR_NUMBER_LIMITED);
         } else if (lNumber < 2) {
             return lNumber;
         } else {
@@ -173,8 +176,8 @@ public class Fibonacci {
     private static long doubling(long lNumber) {
         if (lNumber < 0) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
-        } else if (lNumber >= 93) {
-            throw new IllegalArgumentException(S_ERR_NUMBER_93);
+        } else if (lNumber >= MAX_LIMITED) {
+            throw new IllegalArgumentException(S_ERR_NUMBER_LIMITED);
         } else if (lNumber < 2) {
             return lNumber;
         } else {
@@ -201,8 +204,8 @@ public class Fibonacci {
     private static long direct(long lNumber) {
         if (lNumber < 0) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
-        } else if (lNumber >= 70) {
-            throw new IllegalArgumentException(S_ERR_NUMBER_70);
+        } else if (lNumber >= MAX_LIMITED_DIRECT) {
+            throw new IllegalArgumentException(S_ERR_NUMBER_DIRECT);
         } else if (lNumber < 2) {
             return lNumber;
         } else {
