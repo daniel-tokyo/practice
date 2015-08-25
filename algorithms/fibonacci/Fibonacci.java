@@ -11,13 +11,14 @@ public class Fibonacci {
 
     enum method { RECURSIVE, LOOP, MATRIX, DOUBLING, DIRECT } // input methods
 
-    private static final int MAX_LIMITED = 93;
-    private static final int MAX_LIMITED_DIRECT = 70;
-
     private static long     m_lNumber = 0;
     private static method   m_eMethod = method.DIRECT;
 
     // Constants {-----------------------------------------------------
+
+    // Limited numbers
+    private static final int MAX_LIMITED = 93;
+    private static final int MAX_LIMITED_DIRECT = 70;
 
     // Error Messages
     private static final String S_ERR_NS  = new String("Not Support!");
