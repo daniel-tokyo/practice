@@ -119,11 +119,8 @@ class TreeFactory {
             Random oRandom = new Random();
             for (int i = 0; i < iCnt; i++) {
                 Integer oKey = new Integer(oRandom.nextInt(10000));
-                String oMsg = "Add [" + oKey + "]...(" + i + ")";
-                if (oTree.add(oKey) == false) {
-                    oMsg +=  " -> failed!";
-                }
-                m_oTracer.echo(oMsg);
+                boolean bFlag = oTree.add(oKey);
+                m_oTracer.echo(buildMessage(i, oKey, bFlag));
             }
         }
         return oTree;
@@ -135,11 +132,8 @@ class TreeFactory {
             Random oRandom = new Random();
             for (int i = 0; i < iCnt; i++) {
                 Float oKey = new Float(oRandom.nextInt(10000) + oRandom.nextFloat());
-                String oMsg = "Add [" + oKey + "]...(" + i + ")";
-                if (oTree.add(oKey) == false) {
-                    oMsg +=  " -> failed!";
-                }
-                m_oTracer.echo(oMsg);
+                boolean bFlag = oTree.add(oKey);
+                m_oTracer.echo(buildMessage(i, oKey, bFlag));
             }
         }
         return oTree;
@@ -151,14 +145,19 @@ class TreeFactory {
             Random oRandom = new Random();
             for (int i = 0; i < iCnt; i++) {
                 Double oKey = new Double(oRandom.nextInt(10000) + oRandom.nextDouble());
-                String oMsg = "Add [" + oKey + "]...(" + i + ")";
-                if (oTree.add(oKey) == false) {
-                    oMsg +=  " -> failed!";
-                }
-                m_oTracer.echo(oMsg);
+                boolean bFlag = oTree.add(oKey);
+                m_oTracer.echo(buildMessage(i, oKey, bFlag));
             }
         }
         return oTree;
+    }
+
+    private String buildMessage(int iIndex, Number oKey, boolean bFlag) {
+        String oMsg = "Add [" + oKey + "]...(" + iIndex + ")";
+        if (bFlag == false) {
+            oMsg += " -> failed!";
+        }
+        return oMsg;
     }
 }
 
