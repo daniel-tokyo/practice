@@ -108,7 +108,7 @@ public class Fibonacci {
     }
 
     private static long recursive(long lNumber) {
-        if (lNumber < 0 || lNumber > 92) {
+        if (lNumber < 0 || lNumber >= 93) {
             throw new IllegalArgumentException(S_ERR_NUMBER);
         } else if (lNumber < 2) {
             return lNumber;
