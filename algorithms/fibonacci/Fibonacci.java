@@ -60,13 +60,14 @@ public class Fibonacci {
     private static void usage() {
         System.out.println("Usage:");
         System.out.println("\tFibonacci <algorithm> <number>\n");
-        System.out.println("\talgorithm: " 
+        System.out.println("\t- algorithm: " 
                 + S_MTD_REC + ", " 
                 + S_MTD_LOP + ", " 
                 + S_MTD_MTX + ", " 
                 + S_MTD_DBL + ", " 
                 + S_MTD_DRT);
-        System.out.println("\tnumber:    a natural number greater than zero.\n");
+        System.out.println("\t- number:    a natural number greater than zero. The max limited is "
+                + MAX_LIMITED + " except direct algorithm is " + MAX_LIMITED_DIRECT + ".\n");
     }
 
     // Will throw IllegalArgumentException
