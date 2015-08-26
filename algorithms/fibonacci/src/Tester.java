@@ -33,7 +33,7 @@ public class Tester {
     public static void main(String[] args) {
         try {
             parseArguments(args);
-            //asset(m_oFibonacci != null);
+            asset m_oFibonacci != null;
             System.out.println("F(" + m_oFibonacci.getNumber() + ") = " + m_oFibonacci);
         } catch (Exception e) {
             System.out.println("EXCEPTION: " + e.getMessage());
@@ -77,7 +77,7 @@ public class Tester {
                 } else {
                     throw new IllegalArgumentException(S_ERR_METHOD);
                 }
-                //asset(m_oFibonacci != null);
+                asset m_oFibonacci != null;
                 m_oFibonacci.setNumber(number);
             }
         }
