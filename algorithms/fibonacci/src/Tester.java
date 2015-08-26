@@ -10,10 +10,6 @@ public class Tester {
 
     // Constants {-----------------------------------------------------
 
-    // Limited numbers
-    private static final int MAX_LIMITED = 93;
-    private static final int MAX_LIMITED_DIRECT = 70;
-
     // Error Messages
     private static final String S_ERR_ARG = new String("Need 2 input arguments!");
     private static final String S_ERR_NUMBER = 
@@ -36,14 +32,14 @@ public class Tester {
             assert(m_oFibonacci != null);
             System.out.println("F(" + m_oFibonacci.getNumber() + ") = " + m_oFibonacci);
         } catch (Exception e) {
-            System.out.println("EXCEPTION: " + e.getMessage());
+            System.out.println("\nEXCEPTION: " + e.getMessage());
             System.out.println("----------");
             usage();
         }
     }
 
     private static void usage() {
-        System.out.println("Usage:");
+        System.out.println("\nUsage:");
         System.out.println("\tFibonacci <algorithm> <number>\n");
         System.out.println("\t- algorithm: " 
                 + S_MTD_REC + ", " 
@@ -51,8 +47,7 @@ public class Tester {
                 + S_MTD_MTX + ", " 
                 + S_MTD_DBL + ", " 
                 + S_MTD_DRT);
-        System.out.println("\t- number:    a natural number greater than zero. The max limited is "
-                + MAX_LIMITED + " except direct algorithm is " + MAX_LIMITED_DIRECT + ".\n");
+        System.out.println("\t- number:    a natural number greater than zero.\n");
     }
 
     // Will throw IllegalArgumentException
