@@ -6,9 +6,9 @@
 import java.math.BigInteger;
 
 
+// F(n+2) = F(n+1) + F(n)
 public class FibonacciLoop extends Fibonacci {
 
-    // F(n+2) = F(n+1) + F(n)
     public BigInteger calculate() {
         BigInteger Fn = BigInteger.ZERO;
         BigInteger Fn1 = BigInteger.ONE;

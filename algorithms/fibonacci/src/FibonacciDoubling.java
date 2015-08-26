@@ -7,6 +7,12 @@
 import java.math.BigInteger;
 
 
+/* 
+ * Fast doubling method. Faster than the matrix method.
+ * F(2n) = F(n) * (2*F(n+1) - F(n)).
+ * F(2n+1) = F(n+1)^2 + F(n)^2.
+ * This implementation is the non-recursive version.
+ */
 public class FibonacciDoubling extends Fibonacci {
 
     public BigInteger calculate() {
@@ -17,37 +23,26 @@ public class FibonacciDoubling extends Fibonacci {
         }
     }
 
-    /* 
-     * Fast doubling method. Faster than the matrix method.
-     * F(2n) = F(n) * (2*F(n+1) - F(n)).
-     * F(2n+1) = F(n+1)^2 + F(n)^2.
-     * This implementation is the non-recursive version.
-     */
     private static BigInteger doubling(int n) {
-        BigInteger a = BigInteger.ZERO;
-        BigInteger b = BigInteger.ONE;
+        BigInteger Fn = BigInteger.ZERO;
+        BigInteger Fn1 = BigInteger.ONE;
         int m = 0;
         for (int i = 31 - Integer.numberOfLeadingZeros(n); i >= 0; i--) {
             // Double it
-            BigInteger d = multiply(a, b.shiftLeft(1).subtract(a));
-            BigInteger e = multiply(a, a).add(multiply(b, b));
-            a = d;
-            b = e;
+            BigInteger F2n = Fn.multiply(Fn1.shiftLeft(1).subtract(Fn));
+            BigInteger F2n1 = Fn.multiply(Fn).add(Fn1.multiply(Fn1));
+            Fn = F2n;
+            Fn1 = F2n1;
             m *= 2;
             // Advance by one conditionally
             if (((n >>> i) & 1) != 0) {
-                BigInteger c = a.add(b);
-                a = b;
-                b = c;
+                BigInteger c = Fn.add(Fn1);
+                Fn = Fn1;
+                Fn1 = c;
                 m++;
             }
         }
-        return a;
-    }
-
-    // Multiplies two BigIntegers. This function makes it easy to swap in a faster algorithm like Karatsuba multiplication.
-    private static BigInteger multiply(BigInteger x, BigInteger y) {
-        return x.multiply(y);
+        return Fn;
     }
 }
 

@@ -6,46 +6,13 @@
 import java.math.BigInteger;
 
 
+/* 
+ * Fast matrix method. Easy to describe, but has a constant factor slowdown compared to doubling method.
+ * [1 1]^n   [F(n+1) F(n)  ]
+ * [1 0]   = [F(n)   F(n-1)].
+ */
 public class FibonacciMatrix extends Fibonacci {
 
-    /*
-    public long calculate() {
-        if (m_iNumber < 2) {
-            return m_iNumber;
-        } else {
-            long[] laSeed = { 1, 1, 1, 0 };
-            return matrixPow(laSeed, m_iNumber)[1];
-        }
-    }
-
-    private static long[] matrixPow(long[] laMatrix, long lNumber) {
-        assert lNumber >= 0;
-        long[] laResult = { 1, 0, 0, 1 };
-        while (lNumber != 0) {
-            if (lNumber % 2 != 0) {
-                laResult = matrixMultiply(laResult, laMatrix);
-            }
-            lNumber /= 2;
-            laMatrix = matrixMultiply(laMatrix, laMatrix);
-        }
-        return laResult;
-    }
-
-    private static long[] matrixMultiply(long[] laX, long[] laY) {
-        return new long[] {
-                (laX[0] * laY[0]) + (laX[1] * laY[2]),
-                (laX[0] * laY[1]) + (laX[1] * laY[3]),
-                (laX[2] * laY[0]) + (laX[3] * laY[2]),
-                (laX[2] * laY[1]) + (laX[3] * laY[3])
-        };
-    }
-    */
-
-    /* 
-     * Fast matrix method. Easy to describe, but has a constant factor slowdown compared to doubling method.
-     * [1 1]^n   [F(n+1) F(n)  ]
-     * [1 0]   = [F(n)   F(n-1)].
-     */
     public BigInteger calculate() {
         if (m_iNumber < 2) {
             return BigInteger.valueOf(m_iNumber);
@@ -72,16 +39,11 @@ public class FibonacciMatrix extends Fibonacci {
     // Multiplies two matrices.
     private static BigInteger[] matrixMultiply(BigInteger[] x, BigInteger[] y) {
         return new BigInteger[] {
-            multiply(x[0], y[0]).add(multiply(x[1], y[2])),
-                multiply(x[0], y[1]).add(multiply(x[1], y[3])),
-                multiply(x[2], y[0]).add(multiply(x[3], y[2])),
-                multiply(x[2], y[1]).add(multiply(x[3], y[3]))
+            x[0].multiply(y[0]).add(x[1].multiply(y[2])),
+            x[0].multiply(y[1]).add(x[1].multiply(y[3])),
+            x[2].multiply(y[0]).add(x[3].multiply(y[2])),
+            x[2].multiply(y[1]).add(x[3].multiply(y[3]))
         };
-    }
-
-    // Multiplies two BigIntegers. This function makes it easy to swap in a faster algorithm like Karatsuba multiplication.
-    private static BigInteger multiply(BigInteger x, BigInteger y) {
-        return x.multiply(y);
     }
 }
 

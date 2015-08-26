@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.lang.Math;
 
 
+// F(n) = (sqrt(5)/5) * (pow(((1+sqrt(5))/2), n) - pow((1-sqrt(5))/2, n))
 public class FibonacciDirect extends Fibonacci {
 
     private static final int MAX_LIMITED = 71;
@@ -17,7 +18,6 @@ public class FibonacciDirect extends Fibonacci {
     private static final double D_PHI = (1 + Math.sqrt(5)) / 2;
     private static final double D_PSI = (1 - Math.sqrt(5)) / 2;
 
-    // F(n) = (sqrt(5)/5) * (pow(((1+sqrt(5))/2), n) - pow((1-sqrt(5))/2, n))
     public BigInteger calculate() {
         if (m_iNumber >= MAX_LIMITED) {
             throw new IllegalArgumentException("The DIRECT is limied less than " + MAX_LIMITED + "!");
