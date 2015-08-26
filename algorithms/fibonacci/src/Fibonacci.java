@@ -6,22 +6,20 @@
 
 public abstract class Fibonacci {
 
-    private int m_iNumber = 0;
+    protected        int    m_iNumber   = 0;
+    protected static int    m_iMax      = 93;    // Max limited
 
-    // Constants {-----------------------------------------------------
-
-    // Limited numbers
-    private static final int MAX_LIMITED = 93;
-
-    // Error Messages
-    private static final String S_ERR_NUMBER = 
-        new String("The input number should be greater than zero and less than " + MAX_LIMITED + "!");
-
-    // -----------------------------------------------} End of Constants
+    public int getMaxLimited() {
+        return m_iMax;
+    }
 
     public void setNumber(int iNumber) {
-        if (iNumber < 0 || iNumber >= MAX_LIMITED) {
-            throw new IllegalArgumentException(S_ERR_NUMBER);
+        if (iNumber < 0 || iNumber >= m_iMax) {
+            throw new IllegalArgumentException(
+                new String(
+                    "The input number should be greater than zero and less than "
+                    + m_iMax + "!")
+            );
         } else {
             m_iNumber = iNumber;
         }
@@ -32,10 +30,10 @@ public abstract class Fibonacci {
     }
 
     public String toString() {
-        return String.valueOf(calculate(m_iNumber));
+        return String.valueOf(calculate());
     }
 
-    abstract long calculate(long lNumber);
+    abstract long calculate();
 }
 
 /*{+----------------------------------------- Embira Footer 1.6 ---------+

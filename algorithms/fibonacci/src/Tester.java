@@ -32,8 +32,8 @@ public class Tester {
 
     public static void main(String[] args) {
         try {
-            parseArguments(args);
-            asset m_oFibonacci != null;
+            initFibonacci(args);
+            assert(m_oFibonacci != null);
             System.out.println("F(" + m_oFibonacci.getNumber() + ") = " + m_oFibonacci);
         } catch (Exception e) {
             System.out.println("EXCEPTION: " + e.getMessage());
@@ -56,7 +56,7 @@ public class Tester {
     }
 
     // Will throw IllegalArgumentException
-    private static void parseArguments(String[] args) {
+    private static void initFibonacci(String[] args) {
         if (args.length != 2) {
             throw new IllegalArgumentException(S_ERR_ARG);
         } else {
@@ -77,7 +77,7 @@ public class Tester {
                 } else {
                     throw new IllegalArgumentException(S_ERR_METHOD);
                 }
-                asset m_oFibonacci != null;
+                assert(m_oFibonacci != null);
                 m_oFibonacci.setNumber(number);
             }
         }

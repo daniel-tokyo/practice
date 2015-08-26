@@ -6,11 +6,15 @@
 
 public class FibonacciRecursive extends Fibonacci {
 
-    public long calculate(long lNumber) {
+    public long calculate() {
+        return recursive(m_iNumber);
+    }
+
+    private static long recursive(long lNumber) {
         if (lNumber < 2) {
             return lNumber;
         } else {
-            return (calculate(lNumber-1) + calculate(lNumber-2));
+            return (recursive(lNumber-1) + recursive(lNumber-2));
         }
     }
 }

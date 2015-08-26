@@ -7,10 +7,10 @@
 public class FibonacciLoop extends Fibonacci {
 
     // F(n+2) = F(n+1) + F(n)
-    public long calculate(long lNumber) {
+    public long calculate() {
         long lFn = 0;
         long lFn1= 1;
-        for (long i = 0; i < lNumber; i++) {
+        for (long i = 0; i < m_iNumber; i++) {
             long lFn2 = lFn1 + lFn;
             lFn = lFn1;
             lFn1 = lFn2;

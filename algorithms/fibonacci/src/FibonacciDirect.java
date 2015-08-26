@@ -9,31 +9,22 @@ import java.lang.Math;
 
 public class FibonacciDirect extends Fibonacci {
 
-    // Constants {-----------------------------------------------------
-
-    // Limited numbers
-    private static final int MAX_LIMITED_DIRECT = 70;
-
-    // Error Messages
-    private static final String S_ERR_NUMBER_DIRECT = 
-        new String("The input number cannot be greater than " + MAX_LIMITED_DIRECT + "!");
-
     // Constants for direct method
     private static final double D_FACTOR = Math.sqrt(5) / 5;
     private static final double D_PHI = (1 + Math.sqrt(5)) / 2;
     private static final double D_PSI = (1 - Math.sqrt(5)) / 2;
 
-    // -----------------------------------------------} End of Constants
+    public FibonacciDirect() {
+        m_iMax = 70;
+    }
 
     // F(n) = (sqrt(5)/5) * (pow(((1+sqrt(5))/2), n) - pow((1-sqrt(5))/2, n))
-    public long calculate(long lNumber) {
-        if (lNumber >= MAX_LIMITED_DIRECT) {
-            throw new IllegalArgumentException(S_ERR_NUMBER_DIRECT);
-        } else if (lNumber < 2) {
-            return lNumber;
+    public long calculate() {
+        if (m_iNumber < 2) {
+            return m_iNumber;
         } else {
             double dRes = D_FACTOR * 
-                (Math.pow(D_PHI, lNumber) - Math.pow(D_PSI, lNumber));
+                (Math.pow(D_PHI, m_iNumber) - Math.pow(D_PSI, m_iNumber));
             return Double.valueOf(dRes).longValue();
         }
     }

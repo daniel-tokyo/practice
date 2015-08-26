@@ -9,11 +9,11 @@ import java.lang.Math;
 
 public class FibonacciDoubling extends Fibonacci {
 
-    public long calculate(long lNumber) {
-        if (lNumber < 2) {
-            return lNumber;
+    public long calculate() {
+        if (m_iNumber < 2) {
+            return m_iNumber;
         } else {
-            return doublingTuple(lNumber)[0];
+            return doublingTuple(m_iNumber)[0];
         }
     }
 

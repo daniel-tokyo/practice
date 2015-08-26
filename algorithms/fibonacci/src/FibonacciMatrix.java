@@ -6,12 +6,12 @@
 
 public class FibonacciMatrix extends Fibonacci {
 
-    public long calculate(long lNumber) {
-        if (lNumber < 2) {
-            return lNumber;
+    public long calculate() {
+        if (m_iNumber < 2) {
+            return m_iNumber;
         } else {
             long[] laSeed = { 1, 1, 1, 0 };
-            return matrixPow(laSeed, lNumber)[1];
+            return matrixPow(laSeed, m_iNumber)[1];
         }
     }
 
