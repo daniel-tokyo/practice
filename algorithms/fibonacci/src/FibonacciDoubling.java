@@ -4,32 +4,50 @@
  */
 
 
-import java.lang.Math;
+import java.math.BigInteger;
 
 
 public class FibonacciDoubling extends Fibonacci {
 
-    public long calculate() {
+    public BigInteger calculate() {
         if (m_iNumber < 2) {
-            return m_iNumber;
+            return BigInteger.valueOf(m_iNumber);
         } else {
-            return doublingTuple(m_iNumber)[0];
+            return doubling(m_iNumber);
         }
     }
 
-    private static long[] doublingTuple(long lNumber) {
-        if (lNumber == 0) {
-            return new long[] { 0, 1 };
-        } else {
-            long[] laTuple = doublingTuple(lNumber/2);
-            long lC = laTuple[0] * ((2 * laTuple[1]) - laTuple[0]);
-            long lD = (laTuple[1] * laTuple[1]) + (laTuple[0] * laTuple[0]);
-            if (lNumber % 2 == 0) {
-                return new long[] { lC, lD  };
-            } else {
-                return new long[] { lD, lC + lD };
+    /* 
+     * Fast doubling method. Faster than the matrix method.
+     * F(2n) = F(n) * (2*F(n+1) - F(n)).
+     * F(2n+1) = F(n+1)^2 + F(n)^2.
+     * This implementation is the non-recursive version.
+     */
+    private static BigInteger doubling(int n) {
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        int m = 0;
+        for (int i = 31 - Integer.numberOfLeadingZeros(n); i >= 0; i--) {
+            // Double it
+            BigInteger d = multiply(a, b.shiftLeft(1).subtract(a));
+            BigInteger e = multiply(a, a).add(multiply(b, b));
+            a = d;
+            b = e;
+            m *= 2;
+            // Advance by one conditionally
+            if (((n >>> i) & 1) != 0) {
+                BigInteger c = a.add(b);
+                a = b;
+                b = c;
+                m++;
             }
         }
+        return a;
+    }
+
+    // Multiplies two BigIntegers. This function makes it easy to swap in a faster algorithm like Karatsuba multiplication.
+    private static BigInteger multiply(BigInteger x, BigInteger y) {
+        return x.multiply(y);
     }
 }
 

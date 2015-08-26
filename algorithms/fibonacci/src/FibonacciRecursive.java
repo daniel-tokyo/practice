@@ -3,18 +3,20 @@
  * Create at: 2012-07-26 18:17:11
  */
 
+import java.math.BigInteger;
+
 
 public class FibonacciRecursive extends Fibonacci {
 
-    public long calculate() {
+    public BigInteger calculate() {
         return recursive(m_iNumber);
     }
 
-    private static long recursive(long lNumber) {
+    private static BigInteger recursive(long lNumber) {
         if (lNumber < 2) {
-            return lNumber;
+            return BigInteger.valueOf(lNumber);
         } else {
-            return (recursive(lNumber-1) + recursive(lNumber-2));
+            return (recursive(lNumber-1).add(recursive(lNumber-2)));
         }
     }
 }

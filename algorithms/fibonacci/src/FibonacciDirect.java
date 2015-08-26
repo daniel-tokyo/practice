@@ -4,28 +4,29 @@
  */
 
 
+import java.math.BigInteger;
 import java.lang.Math;
 
 
 public class FibonacciDirect extends Fibonacci {
+
+    private static final int MAX_LIMITED = 71;
 
     // Constants for direct method
     private static final double D_FACTOR = Math.sqrt(5) / 5;
     private static final double D_PHI = (1 + Math.sqrt(5)) / 2;
     private static final double D_PSI = (1 - Math.sqrt(5)) / 2;
 
-    public FibonacciDirect() {
-        m_iMax = 70;
-    }
-
     // F(n) = (sqrt(5)/5) * (pow(((1+sqrt(5))/2), n) - pow((1-sqrt(5))/2, n))
-    public long calculate() {
-        if (m_iNumber < 2) {
-            return m_iNumber;
+    public BigInteger calculate() {
+        if (m_iNumber >= MAX_LIMITED) {
+            throw new IllegalArgumentException("The DIRECT is limied less than " + MAX_LIMITED + "!");
+        } else if (m_iNumber < 2) {
+            return BigInteger.valueOf(m_iNumber);
         } else {
             double dRes = D_FACTOR * 
                 (Math.pow(D_PHI, m_iNumber) - Math.pow(D_PSI, m_iNumber));
-            return Double.valueOf(dRes).longValue();
+            return BigInteger.valueOf(Double.valueOf(dRes).longValue());
         }
     }
 }
